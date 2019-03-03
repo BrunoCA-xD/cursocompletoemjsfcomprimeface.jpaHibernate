@@ -12,16 +12,24 @@ public class UsuarioPessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="nome")
+	@Column(name = "nome")
 	private String nome;
-	@Column(name="sobrenome")
+	@Column(name = "sobrenome")
 	private String sobrenome;
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	@Column(name="login")
+	@Column(name = "login")
 	private String login;
-	@Column(name="senha")
+	@Column(name = "senha")
 	private String senha;
+
+	public UsuarioPessoa() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public UsuarioPessoa(Long id) {
+		this.id= id;
+	}
 
 	public Long getId() {
 		return id;
@@ -69,6 +77,12 @@ public class UsuarioPessoa {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	@Override
+	public String toString() {
+		return "UsuarioPessoa [id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", email=" + email
+				+ ", login=" + login + ", senha=" + senha + "]";
 	}
 
 }
