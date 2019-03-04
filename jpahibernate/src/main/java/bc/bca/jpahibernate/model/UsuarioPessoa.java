@@ -1,12 +1,19 @@
 package bc.bca.jpahibernate.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "UsuarioPessoa.findAll", query = "select u from UsuarioPessoa u"),
+		@NamedQuery(name = "UsuarioPessoa.buscaPorNome", query = "select u from UsuarioPessoa u where u.nome = :nome") })
 public class UsuarioPessoa {
 
 	@Id
@@ -23,12 +30,15 @@ public class UsuarioPessoa {
 	@Column(name = "senha")
 	private String senha;
 
+	@OneToMany(mappedBy = "usuario")
+	private List<UsuarioTelefone> telefones;
+
 	public UsuarioPessoa() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public UsuarioPessoa(Long id) {
-		this.id= id;
+		this.id = id;
 	}
 
 	public Long getId() {
@@ -77,6 +87,14 @@ public class UsuarioPessoa {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public void setTelefones(List<UsuarioTelefone> telefones) {
+		this.telefones = telefones;
+	}
+
+	public List<UsuarioTelefone> getTelefones() {
+		return telefones;
 	}
 
 	@Override

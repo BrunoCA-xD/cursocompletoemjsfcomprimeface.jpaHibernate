@@ -40,4 +40,8 @@ public class DaoGeneric<E> {
 		
 		return lst;
 	}
+	
+	public EntityManager getEm() {
+		return em;
+	}
 }
